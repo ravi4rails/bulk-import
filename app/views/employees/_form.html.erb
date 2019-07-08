@@ -1,37 +1,24 @@
-<%= form_with(model: employee, local: true) do |form| %>
-  <% if employee.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+<div  class="card-body">
+  <%= form_with(model: employee, local: true) do |form| %>
+    <%= form_group_for form, :name  do %>
+      <%= form.text_field :name, autofocus: true, class: "form-control" %>
+    <% end %>
 
-      <ul>
-      <% employee.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <%= form_group_for form, :email  do %>
+      <%= form.email_field :email, class: "form-control" %>
+    <% end %>
+
+    <%= form_group_for form, :phone  do %>
+      <%= form.text_field :phone, class: "form-control" %>
+    <% end %>
+
+    <%= form_group_for form, :company_id  do %>
+      <%= form.collection_select :company_id, Company.all, :id, :name, {prompt: "Select Company"}, { class: 'form-control' } %>
+    <% end %>
+
+    <div class="actions mt-2">
+      <%= form.submit class:'btn btn-primary' %>
+      <%= link_to "Back", employees_path, class: 'btn btn-secondary' %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :company_id %>
-    <%= form.text_field :company_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

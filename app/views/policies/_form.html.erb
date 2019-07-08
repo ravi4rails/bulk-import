@@ -1,27 +1,16 @@
-<%= form_with(model: policy, local: true) do |form| %>
-  <% if policy.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(policy.errors.count, "error") %> prohibited this policy from being saved:</h2>
+<div  class="card-body">
+  <%= form_with(model: policy, local: true) do |form| %>
+    <%= form_group_for form, :name  do %>
+      <%= form.text_field :name, autofocus: true, class: "form-control" %>
+    <% end %>
 
-      <ul>
-      <% policy.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <%= form_group_for form, :company_id  do %>
+      <%= form.collection_select :company_id, Company.all, :id, :name, {prompt: "Select Company"}, { class: 'form-control' } %>
+    <% end %>
+
+    <div class="actions mt-2">
+      <%= form.submit class:'btn btn-primary' %>
+      <%= link_to "Back", policies_path, class: 'btn btn-secondary' %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :company_id %>
-    <%= form.text_field :company_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

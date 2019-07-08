@@ -1,6 +1,12 @@
-<h1>Editing Employee</h1>
-
-<%= render 'form', employee: @employee %>
-
-<%= link_to 'Show', @employee %> |
-<%= link_to 'Back', employees_path %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="card mt-5">
+        <div class="card-header">
+          <h2>Edit Employee</h2>
+        </div>
+        <%= render 'form', employee: @employee %>
+      </div>
+    </div>
+  </div>
+</div>

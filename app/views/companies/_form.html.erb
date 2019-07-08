@@ -1,22 +1,13 @@
-<%= form_with(model: company, local: true) do |form| %>
-  <% if company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
+<div  class="card-body">
+  <%= form_with(model: company, local: true) do |f| %>
 
-      <ul>
-      <% company.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <%= form_group_for f, :name  do %>
+      <%= f.text_field :name, autofocus: true, class: "form-control" %>
+    <% end %>
+
+    <div class="actions mt-2">
+      <%= f.submit class:'btn btn-primary' %>
+      <%= link_to "Back", companies_path, class: 'btn btn-secondary' %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

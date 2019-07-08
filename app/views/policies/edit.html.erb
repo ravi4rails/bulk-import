@@ -1,6 +1,12 @@
-<h1>Editing Policy</h1>
-
-<%= render 'form', policy: @policy %>
-
-<%= link_to 'Show', @policy %> |
-<%= link_to 'Back', policies_path %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="card mt-5">
+        <div class="card-header">
+          <h2>Edit Policy</h2>
+        </div>
+        <%= render 'form', policy: @policy %>
+      </div>
+    </div>
+  </div>
+</div>

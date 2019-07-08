@@ -1,29 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Policies</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Company</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @policies.each do |policy| %>
-      <tr>
-        <td><%= policy.name %></td>
-        <td><%= policy.company %></td>
-        <td><%= link_to 'Show', policy %></td>
-        <td><%= link_to 'Edit', edit_policy_path(policy) %></td>
-        <td><%= link_to 'Destroy', policy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Policy', new_policy_path %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-6">
+        <h1>Policies</h1>
+      </div>
+      <div class="col-md-6 text-right">
+        <%= link_to 'New Policy', new_policy_path, class: 'btn btn-primary' %>
+      </div>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Company</th>
+          <th colspan="3" width="30%">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @policies.each do |policy| %>
+          <tr>
+            <td><%= policy.name %></td>
+            <td><%= policy.company.name %></td>
+            <td><%= link_to 'Show', policy %></td>
+            <td><%= link_to 'Edit', edit_policy_path(policy), id: "edit_#{policy.id}" %></td>
+            <td><%= link_to 'Destroy', policy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
